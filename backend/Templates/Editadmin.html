@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">EDIT PAGE</h4>
+                    <p class="card-description">  EDIT DETAILS </p>
+                    <form class="forms-sample" method="post" action="{% url 'updatedata' dataid=data.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="Name" value="{{data.Name}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail2">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email" name="Email" value="{{data.Email}}">
+                          <div class="form-group">
+                        <label for="exampleInputName3">mobile</label>
+                        <input type="text" class="form-control" id="exampleInputName3" placeholder="Mobile" name="Mobile" value="{{data.Mobile}}">
+                      </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName4">Username</label>
+                        <input type="text" class="form-control" id="exampleInputName4" placeholder="Username" name="Username" value="{{data.Username}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputPassword4">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password" name="Password" value="{{data.Password}}">
+                      </div>
+
+                      <div>
+                        <img src="{{data.image.url}}">
+                          <input type="file" name="image">
+                      </div>
+
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+</body>
+{% endblock %}
+</html>

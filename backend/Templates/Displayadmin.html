@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Display Admin Details</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Username</th>
+                              <th>Password</th>
+                              <th>image</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for d in data %}
+                        <tr>
+                            <td>{{ d.Name }}</td>
+                            <td>{{ d.Email }}</td>
+                            <td>{{ d.Mobile }}</td>
+                            <td>{{ d.Username }}</td>
+                            <td>{{ d.Password }}</td>
+                            <td>
+                                <img src="{{ d.image.url }}">
+                            </td>
+                            <td>
+                                <form action="{% url 'editadmin' dataid=d.id %}">
+                                    <button type="submit" class="btn btn-success">edit</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{% url 'deletedata' dataid=d.id %}">
+                                    <button type="submit" class="btn btn-success">Delete</button>
+                                </form>
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+</body>
+{% endblock %}
+</html>

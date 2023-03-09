@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">EDIT PRODUCT PAGE</h4>
+                    <p class="card-description">  EDIT DETAILS </p>
+                    <form class="forms-sample" method="post" action="{% url 'updateproduct' dataid=data.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                        <div class="form-group">
+                        <label for="exampleSelectGender">Category</label>
+                        <select class="form-control" id="exampleSelectGender" name="category" value="{{data.category}}">
+                          <option>select</option>
+                          {% for d in da %}
+                          <option>{{d.Name}}</option>
+                              {% endfor %}
+
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Product Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="productname" value="{{data.productname}}">
+                      </div>
+                          <div class="form-group">
+                        <label for="exampleInputName3">Price</label>
+                        <input type="text" class="form-control" id="exampleInputName3" placeholder="price" name="price" value="{{data.price}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputName5">Quantity</label>
+                        <input type="text" class="form-control" id="exampleInputName5" placeholder="quantity" name="quantity" value="{{data.quantity}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName4">Description</label>
+                        <input type="text" class="form-control" id="exampleInputName4" placeholder="description" name="description" value="{{data.description}}">
+                      </div>
+                      <div>
+                           <img src="{{data.image.url}}">
+                          <input type="file" name="image">
+                      </div>
+
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+</body>
+{% endblock %}
+</html>
